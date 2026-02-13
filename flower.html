@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cute flower</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Spectral:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="flower.css" />
+  </head>
+  <body>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+      <h1 class="page-title">a cute flower 4 u, mr. hacker</h1>
+      <p class="message">buon giorno dopo venerdì 13 eheh :p</p>
+
+      <div class="flower-container">
+        <div class="stem"></div>
+        <div class="leaf left" style="--rotate: -30deg"></div>
+        <div class="leaf right" style="--rotate: 150deg"></div>
+
+        <div class="flower">
+          <div class="petal" style="--angle: 0deg"></div>
+          <div class="petal" style="--angle: 45deg"></div>
+          <div class="petal" style="--angle: 90deg"></div>
+          <div class="petal" style="--angle: 135deg"></div>
+          <div class="petal" style="--angle: 180deg"></div>
+          <div class="petal" style="--angle: 225deg"></div>
+          <div class="petal" style="--angle: 270deg"></div>
+          <div class="petal" style="--angle: 315deg"></div>
+          <div class="flower-center"></div>
+        </div>
+
+        <div class="sparkle sparkle-1"></div>
+        <div class="sparkle sparkle-2"></div>
+        <div class="sparkle sparkle-3"></div>
+        <div class="sparkle sparkle-4"></div>
+      </div>
+    </div>
+
+    <script>
+      // floating particles
+      const particlesContainer = document.getElementById("particles");
+      const particleCount = 30;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.width = Math.random() * 20 + 10 + "px";
+        particle.style.height = particle.style.width;
+        particle.style.animationDelay = Math.random() * 15 + "s";
+        particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+        particlesContainer.appendChild(particle);
+      }
+
+      // hover effect to flower
+      const flower = document.querySelector(".flower");
+      let isAnimating = false;
+
+      flower.addEventListener("mouseenter", () => {
+        if (!isAnimating) {
+          isAnimating = true;
+          flower.style.animation = "gentle-sway 2s ease-in-out";
+          setTimeout(() => {
+            flower.style.animation = "";
+            isAnimating = false;
+          }, 2000);
+        }
+      });
+
+      // sway animation
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes gentle-sway {
+                0%, 100% { transform: translateX(-50%) rotate(0deg); }
+                25% { transform: translateX(-50%) rotate(3deg); }
+                75% { transform: translateX(-50%) rotate(-3deg); }
+            }
+        `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>

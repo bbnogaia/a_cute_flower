@@ -129,26 +129,43 @@ h1 {
 /* leaves */
 .leaf {
   position: absolute;
-  width: 60px;
-  height: 30px;
-  background: linear-gradient(135deg, var(--violet-mid), var(--violet-rich));
-  border-radius: 0 50% 50% 0;
+  width: 70px;
+  height: 40px;
+  background: linear-gradient(
+    135deg,
+    var(--violet-mid) 0%,
+    var(--violet-rich) 100%
+  );
+  border-radius: 0 80% 80% 0;
   opacity: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.leaf::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 60%;
+  height: 1px;
+  background: var(--violet-deep);
+  transform: translateY(-50%);
+  opacity: 0.5;
 }
 
 .leaf.left {
   bottom: 100px;
-  left: calc(50% - 70px);
+  left: calc(50% - 3px);
   transform-origin: right center;
-  transform: rotate(-30deg) scaleX(0);
+  transform: rotate(-45deg) scaleX(0);
   animation: growLeaf 0.8s ease-out 1.8s forwards;
 }
 
 .leaf.right {
-  bottom: 140px;
-  left: calc(50% + 10px);
+  bottom: 100px;
+  left: calc(50% - 3px);
   transform-origin: left center;
-  transform: rotate(150deg) scaleX(0);
+  transform: rotate(45deg) scaleX(0);
   animation: growLeaf 0.8s ease-out 2s forwards;
 }
 
@@ -162,7 +179,7 @@ h1 {
 /* flower head */
 .flower {
   position: absolute;
-  top: 50px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 250px;
